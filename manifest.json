@@ -1,7 +1,7 @@
 {
-  "name": "PWA sample",
-  "short_name": "pwas",
-  "background_color": "#0f0",
+  "name": "Kids Puzzle",
+  "short_name": "kids",
+  "background_color": "#373b64",
   "icons": [
     {
       "src": "./icon-256.png",
