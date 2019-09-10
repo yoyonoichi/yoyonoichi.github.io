@@ -1,23 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <title>PWA TEST</title>
-  
-  <link rel="manifest" href="./manifest.json"/>
-  
-  <script>
-    if('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./service-worker.js').then(function() {
-        console.log('service worker register');
-      });
-    }
-  </script>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<body>
-  <h3>PWA TEST</h3>
-  
-  <img src="./assets/-strawberry.png"/>
-  
-</body>
+    <link href="https://fonts.googleapis.com/css?family=Croissant+One" rel="stylesheet"> 
+    <link rel="manifest" href="./manifest.json"/>
+    
+    <title>Kids Puzzle</title>
+    
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js').then(function() {
+          console.log('service worker register');
+        });
+      }
+    </script>
+
+    <link href="css/main.6cd85c63120b6d0833c3.css" rel="stylesheet"></head>
+  <body>
+
+    <div id="AppRoot" class="app_root"></div>
+
+  <script type="text/javascript" src="js/main.89c19c4e9b69a833aed9.js"></script></body>
 </html>
