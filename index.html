@@ -1,10 +1,23 @@
 <!doctype html>
 <html>
 <head>
-  <title></title>
+  <title>PWA TEST</title>
+  
+  <link rel="manifest" href="./manifest.json"/>
+  
+  <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js').then(function() {
+        console.log('service worker register');
+      });
+    }
+  </script>
 </head>
 
 <body>
-  <h3>TEST</h3>
+  <h3>PWA TEST</h3>
+  
+  <img src="assets/-strawberry.png"/>
+  
 </body>
 </html>
