@@ -1,9 +1,9 @@
+const CACHENAME = 'kids-puzzle-v1';
+
 self.addEventListener('install', function(e) {
   console.log('service worker install');
-  console.log(e);
   e.waitUntil(
-    caches.open('v1').then(function(cache) {
-      console.log('cache');
+    caches.open(CACHENAME).then(function(cache) {
       return cache.addAll([
         '/index.html',
         '/js/main.89c19c4e9b69a833aed9.js',
@@ -22,6 +22,15 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-  console.log('fetch');
-  console.log(e.request.url);
+  e.respondWith(
+    caches.match(e.request).then(function(res) {
+      console.log('fetch: '+e.request.url);
+      return res || fetch(e.request).then(function(response) {
+        return caches.open(CACHENAME).then(function(cache) {
+          cache.put(e.request, response.clone());
+          return response;
+        });
+      });
+    })
+  )
 });
