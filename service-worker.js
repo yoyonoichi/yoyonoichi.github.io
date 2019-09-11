@@ -5,7 +5,10 @@ self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        './index.html'    
+        './index.html',
+        './js/main.89c19c4e9b69a833aed9.js',
+        './css/main.6cd85c63120b6d0833c3.css',
+        './puzzles/precure01.jpg'
       ]);
     });
   );
