@@ -31,6 +31,12 @@ self.addEventListener('fetch', function(e) {
           return response;
         });
       });
+    }).catch(function(err) {
+      console.log(err);
+      if(/\/puzzles\//.test(e.request.url)) {
+        return caches.match('/puzzles/precure01.jpg');
+      }
+      throw error;
     })
   )
 });
