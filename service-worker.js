@@ -1,4 +1,4 @@
-const CACHENAME = 'kids-puzzle-v1';
+const CACHENAME = 'kids-puzzle-v2';
 
 self.addEventListener('install', function(e) {
   console.log('service worker install');
@@ -19,6 +19,16 @@ self.addEventListener('install', function(e) {
 
 self.addEventListener('activate', function(e) {
   console.log('service worker activate');
+  e.waitUntil(
+    caches.keys().then(function(keyList) {
+      return Promise.all(keyList.map(function(key) {
+        console.log('cache key: '+key);
+        if(key !== CACHENAME) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  )
 });
 
 self.addEventListener('fetch', function(e) {
@@ -27,7 +37,7 @@ self.addEventListener('fetch', function(e) {
       console.log('fetch: '+e.request.url);
       return res || fetch(e.request).then(function(response) {
         return caches.open(CACHENAME).then(function(cache) {
-          cache.put(e.request, response.clone());
+          //cache.put(e.request, response.clone());
           return response;
         });
       });
